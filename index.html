@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Harsha's Atelier · fashion design</title>
+  <!-- Font Awesome & Google Fonts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #fcf9f5;
+      color: #1e1a16;
+      line-height: 1.5;
+    }
+
+    /* ---------- HEADER / NAV ---------- */
+    .top-bar {
+      background: #0e0c0a;
+      color: #f0eae2;
+      padding: 0.8rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.8rem 1.5rem;
+      border-bottom: 3px solid #c9a77b;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+
+    .logo {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #f3d6b5, #dbb586);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo i {
+      -webkit-text-fill-color: #dbb586;
+      font-size: 2rem;
+      filter: drop-shadow(0 0 6px rgba(200, 167, 123, 0.3));
+    }
+
+    .logo span {
+      background: none;
+      -webkit-text-fill-color: #f0eae2;
+      font-weight: 300;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      margin-left: 4px;
+      opacity: 0.7;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      color: #e3d9ce;
+      text-decoration: none;
+      transition: 0.2s;
+      letter-spacing: 0.3px;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 4px;
+    }
+
+    .nav-links a:hover {
+      color: #f3d6b5;
+      border-bottom-color: #c9a77b;
+    }
+
+    .nav-links .cart-icon {
+      font-size: 1.3rem;
+      color: #e3d9ce;
+      transition: 0.2s;
+    }
+
+    .nav-links .cart-icon:hover {
+      color: #f3d6b5;
+      transform: scale(1.1);
+    }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      background: linear-gradient(165deg, #241f1a, #17120e);
+      padding: 3rem 5% 3.5rem;
+      text-align: center;
+      color: #f2ede7;
+      box-shadow: inset 0 -8px 20px rgba(0,0,0,0.5);
+      margin-bottom: 2.8rem;
+      position: relative;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #c9a77b, #e8cfb0, #c9a77b);
+    }
+
+    .hero h1 {
+      font-size: 3.6rem;
+      font-weight: 700;
+      letter-spacing: -1px;
+      line-height: 1.1;
+    }
+
+    .hero h1 .highlight {
+      background: linear-gradient(135deg, #ecd0b0, #dbb586);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 620px;
+      margin: 0.8rem auto 0;
+      opacity: 0.75;
+      font-weight: 300;
+    }
+
+    .hero .sub-tag {
+      margin-top: 1.2rem;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      opacity: 0.6;
+    }
+
+    /* ---------- FILTER BAR ---------- */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.8rem 1.6rem;
+      padding: 0 5% 2.2rem;
+    }
+
+    .filter-btn {
+      background: transparent;
+      border: 1.5px solid #c9a77b;
+      padding: 0.5rem 2rem;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: #241f1a;
+      cursor: pointer;
+      transition: 0.2s;
+      background: rgba(255, 248, 240, 0.6);
+      backdrop-filter: blur(4px);
+      letter-spacing: 0.5px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    }
+
+    .filter-btn:hover {
+      background: #c9a77b;
+      color: #0e0c0a;
+      border-color: #c9a77b;
+      box-shadow: 0 6px 18px rgba(200, 167, 123, 0.25);
+      transform: scale(0.96);
+    }
+
+    .filter-btn.active {
+      background: #b49166;
+      border-color: #b49166;
+      color: #0e0c0a;
+      box-shadow: 0 6px 14px rgba(180, 145, 102, 0.3);
+    }
+
+    /* ---------- PRODUCT GRID ---------- */
+    .collection {
+      padding: 0 5% 4rem;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 2.2rem;
+    }
+
+    /* ---------- CARD ---------- */
+    .product-card {
+      background: #ffffff;
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.04), 0 2px 8px rgba(0, 0, 0, 0.02);
+      transition: 0.35s cubic-bezier(0.15, 0.85, 0.35, 1);
+      border: 1px solid rgba(201, 167, 123, 0.15);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 28px 50px rgba(0, 0, 0, 0.07), 0 10px 24px rgba(201, 167, 123, 0.15);
+      border-color: #c9a77b;
+    }
+
+    .card-img {
+      width: 100%;
+      aspect-ratio: 1 / 1.2;
+      object-fit: cover;
+      background: #eae2d8;
+      transition: 0.3s;
+      display: block;
+    }
+
+    .card-body {
+      padding: 1.4rem 1.2rem 1.2rem;
+      background: #ffffff;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: #b49166;
+      background: #f5ede4;
+      display: inline-block;
+      padding: 0.25rem 1.2rem;
+      border-radius: 50px;
+      margin-bottom: 0.6rem;
+      align-self: flex-start;
+    }
+
+    .product-title {
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-bottom: 0.2rem;
+      color: #1e1a16;
+    }
+
+    .product-desc {
+      font-size: 0.85rem;
+      color: #5f5447;
+      margin-bottom: 0.6rem;
+      font-weight: 400;
+      flex: 1;
+    }
+
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 0.8rem;
+      margin: 0.4rem 0 0.2rem;
+      flex-wrap: wrap;
+    }
+
+    .price {
+      font-weight: 800;
+      font-size: 1.6rem;
+      color: #1e1a16;
+    }
+
+    .price small {
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: #8a7a68;
+      margin-left: 3px;
+    }
+
+    .original-price {
+      font-size: 0.9rem;
+      text-decoration: line-through;
+      color: #a3927e;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 0.8rem;
+      border-top: 1px solid #ede8e0;
+      padding-top: 0.8rem;
+    }
+
+    .btn-add {
+      background: #0e0c0a;
+      color: #f2ede7;
+      border: none;
+      padding: 0.5rem 1.4rem;
+      border-radius: 60px;
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.4px;
+      cursor: pointer;
+      transition: 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-add i {
+      font-size: 0.9rem;
+    }
+
+    .btn-add:hover {
+      background: #c9a77b;
+      color: #0e0c0a;
+      transform: scale(0.96);
+      box-shadow: 0 4px 14px rgba(201, 167, 123, 0.3);
+    }
+
+    .like-icon {
+      color: #a3927e;
+      font-size: 1.3rem;
+      transition: 0.2s;
+      cursor: pointer;
+    }
+
+    .like-icon:hover {
+      color: #c0392b;
+      transform: scale(1.1);
+    }
+
+    /* ---------- FOOTER ---------- */
+    .footer {
+      background: #0e0c0a;
+      color: #b8ada0;
+      padding: 2.5rem 5% 2rem;
+      text-align: center;
+      border-top: 3px solid #c9a77b;
+      margin-top: 1.5rem;
+    }
+
+    .footer .footer-brand {
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #f0eae2;
+    }
+
+    .footer .footer-brand i {
+      color: #c9a77b;
+      margin: 0 6px;
+    }
+
+    .footer small {
+      display: block;
+      margin-top: 0.4rem;
+      opacity: 0.5;
+      font-size: 0.75rem;
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 700px) {
+      .hero h1 { font-size: 2.4rem; }
+      .top-bar { flex-direction: column; align-items: stretch; text-align: center; }
+      .nav-links { justify-content: center; flex-wrap: wrap; gap: 0.8rem; }
+      .product-grid { gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ====== HEADER ====== -->
+  <header class="top-bar">
+    <div class="logo">
+      <i class="fas fa-crown"></i> Harsha<span>·atelier</span>
+    </div>
+    <nav class="nav-links">
+      <a href="#">New</a>
+      <a href="#">Women</a>
+      <a href="#">Men</a>
+      <a href="#">Ethnic</a>
+      <a href="#"><i class="fas fa-user-circle" style="font-size:1.3rem;"></i></a>
+      <a href="#" class="cart-icon"><i class="fas fa-shopping-bag"></i></a>
+    </nav>
+  </header>
+
+  <!-- ====== HERO ====== -->
+  <section class="hero">
+    <h1>where <span class="highlight">Harsha</span> meets <span class="highlight">art</span></h1>
+    <p>Curated designer wear · handcrafted with soul · every piece tells a story.</p>
+    <div class="sub-tag">
+      <span><i class="fas fa-check-circle" style="color: #c9a77b;"></i> 100% authentic</span>
+      <span><i class="fas fa-rupee-sign" style="color: #c9a77b;"></i> prices in INR</span>
+      <span><i class="fas fa-tag" style="color: #c9a77b;"></i> premium brands</span>
+    </div>
+  </section>
+
+  <!-- ====== FILTER ====== -->
+  <div class="filter-bar">
+    <button class="filter-btn active">All</button>
+    <button class="filter-btn">Dresses</button>
+    <button class="filter-btn">Kurtas</button>
+    <button class="filter-btn">Jackets</button>
+    <button class="filter-btn">Sarees</button>
+  </div>
+
+  <!-- ====== PRODUCT GRID ====== -->
+  <section class="collection" id="collection">
+    <div class="product-grid" id="productGrid"></div>
+  </section>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="footer">
+    <div class="footer-brand">
+      <i class="fas fa-crown"></i> Harsha · atelier
+    </div>
+    <p style="margin-top: 0.4rem; letter-spacing: 1px; font-weight: 300;">
+      <i class="fas fa-heart" style="color: #c9a77b;"></i>  crafted with devotion  <i class="fas fa-feather-alt" style="color: #c9a77b;"></i>
+    </p>
+    <small>© 2026 · Harsha's designer house · all prices in INR</small>
+  </footer>
+
+  <script>
+    (function() {
+      // ---------- PRODUCT DATA (with real image URLs) ----------
+      const products = [
+        {
+          id: 1,
+          name: "Artisan Kurta Set",
+          brand: "Raw Mango",
+          category: "Kurtas",
+          price: 18990,
+          originalPrice: 22990,
+          description: "Handwoven chanderi silk with gota patti.",
+          image: "https://images.pexels.com/photos/2988637/pexels-photo-2988637.jpeg?auto=compress&cs=tinysrgb&w=600",
+        },
+        {
+          id: 2,
+          name: "Embroidered Saree",
+          brand: "Sabyasachi",
+          category: "Sarees",
+          price: 45900,
+          originalPrice: 54900,
+          description: "Banarasi silk with zari & intricate floral embroidery.",
+          image: "https://images.pexels.com/photos/2697552/pexels-photo-2697552.jpeg?auto=compress&cs=tinysrgb&w=600",
+        },
+        {
+          id: 3,
+          name: "Tailored Blazer",
+          brand: "Rahul Mishra",
+          category: "Jackets",
+          price: 32400,
+          originalPrice: 38900,
+          description: "Slim-fit wool blend with hand-stitched details.",
+          image: "https://images.pexels.com/photos/7679718/pexels-photo-7679718.jpeg?auto=compress&cs=tinysrgb&w=600",
+        },
+        {
+          id: 4,
+          name: "Silk Midi Dress",
+          brand: "Anita Dongre",
+          category: "Dresses",
+          price: 15500,
+          originalPrice: 18900,
+          description: "Hand-printed silk dress with block print motifs.",
+          image: "https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=600",
+        },
+        {
+          id: 5,
+          name: "Linen Shirt Dress",
+          brand: "Nicobar",
+          category: "Dresses",
+          price: 8900,
+          originalPrice: 10900,
+          description: "Pure linen, relaxed fit with wooden buttons.",
+          image: "https://images.pexels.com/photos/2441541/pexels-photo-2441541.jpeg?auto=compress&cs=tinysrgb&w=600",
+        },
+        {
+          id: 6,
+          name: "Bandhani Jacket",
+          brand: "House of Masaba",
+          category: "Jackets",
+          price: 21500,
+          originalPrice: 25900,
+          description: "Hand-tied bandhani on cotton silk, asymmetrical.",
+          image: "https://images.pexels.com/photos/4881624/pexels-photo-4881624.jpeg?auto=compress&cs=tinysrgb&w=600",
+        },
+        {
+          id: 7,
+          name: "Chanderi Kurta",
+          brand: "Tasva",
+          category: "Kurtas",
+          price: 12300,
+          originalPrice: 14900,
+          description: "Chanderi cotton, subtle checks with contrast piping.",
+          image: "https://images.pexels.com/photos/3182798/pexels-photo-3182798.jpeg?auto=compress&cs=tinysrgb&w=600",
+        },
+        {
+          id: 8,
+          name: "Kanjivaram Saree",
+          brand: "Nalli",
+          category: "Sarees",
+          price: 68500,
+          originalPrice: 82000,
+          description: "Pure kanjivaram silk with temple border & zari.",
+          image: "https://images.pexels.com/photos/2736173/pexels-photo-2736173.jpeg?auto=compress&cs=tinysrgb&w=600",
+        }
+      ];
+
+      // ---------- helper: INR format ----------
+      function formatINR(amount) {
+        return '₹' + amount.toLocaleString('en-IN');
+      }
+
+      const grid = document.getElementById('productGrid');
+      if (!grid) return;
+
+      // ---------- render function ----------
+      function renderProducts(productList) {
+        grid.innerHTML = '';
+        productList.forEach(p => {
+          const card = document.createElement('div');
+          card.className = 'product-card';
+
+          const img = document.createElement('img');
+          img.className = 'card-img';
+          img.src = p.image;
+          img.alt = p.name;
+          img.loading = 'lazy';
+          img.onerror = function() {
+            this.src = 'https://placehold.co/600x800/EAE3DA/8A7A68?text=Harsha';
+          };
+
+          const body = document.createElement('div');
+          body.className = 'card-body';
+
+          const brandSpan = document.createElement('span');
+          brandSpan.className = 'brand-tag';
+          brandSpan.textContent = p.brand;
+
+          const title = document.createElement('div');
+          title.className = 'product-title';
+          title.textContent = p.name;
+
+          const desc = document.createElement('div');
+          desc.className = 'product-desc';
+          desc.textContent = p.description;
+
+          const priceRow = document.createElement('div');
+          priceRow.className = 'price-row';
+
+          const priceSpan = document.createElement('span');
+          priceSpan.className = 'price';
+          priceSpan.innerHTML = `${formatINR(p.price)} <small>INR</small>`;
+
+          const origSpan = document.createElement('span');
+          origSpan.className = 'original-price';
+          origSpan.textContent = formatINR(p.originalPrice);
+
+          priceRow.appendChild(priceSpan);
+          priceRow.appendChild(origSpan);
+
+          const footer = document.createElement('div');
+          footer.className = 'card-footer';
+
+          const addBtn = document.createElement('button');
+          addBtn.className = 'btn-add';
+          addBtn.innerHTML = '<i class="fas fa-plus-circle"></i> ADD';
+          addBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            alert(`✨ ${p.name} (${p.brand}) added to your bag!\n${formatINR(p.price)} INR`);
+          });
+
+          const like = document.createElement('span');
+          like.className = 'like-icon';
+          like.innerHTML = '<i class="far fa-heart"></i>';
+          like.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const icon = like.querySelector('i');
+            icon.classList.toggle('far');
+            icon.classList.toggle('fas');
+            icon.style.color = icon.classList.contains('fas') ? '#c0392b' : '#a3927e';
+          });
+
+          footer.appendChild(addBtn);
+          footer.appendChild(like);
+
+          body.appendChild(brandSpan);
+          body.appendChild(title);
+          body.appendChild(desc);
+          body.appendChild(priceRow);
+          body.appendChild(footer);
+
+          card.appendChild(img);
+          card.appendChild(body);
+          grid.appendChild(card);
+        });
+      }
+
+      // initial render
+      renderProducts(products);
+
+      // ---------- filter buttons (interactive) ----------
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+
+          const category = this.textContent.trim();
+          if (category === 'All') {
+            renderProducts(products);
+          } else {
+            const filtered = products.filter(p => p.category === category);
+            renderProducts(filtered);
+          }
+        });
+      });
+
+    })();
+  </script>
+</body>
+</html>
