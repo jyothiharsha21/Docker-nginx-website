@@ -1,0 +1,39 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage("Code") {
+            steps {
+                git branch: 'main', url: 'https://github.com/jyothiharsha21/Docker-nginx-website.git'
+            }
+        }
+
+        stage("Build Image") {
+            steps {
+                sh 'docker build -t image:v1 .'
+            }
+        }
+
+        stage("Tag & Push") {
+            steps {
+                script {
+                    sh 'docker tag image:v1 jyothiharsha05/myrepo:v1'
+
+                    docker.withRegistry('https://index.docker.io/v1/', 'dockerhub') {
+                        sh 'docker push jyothiharsha05/myrepo:v1'
+                    }
+                }
+            }
+        }
+
+        stage("Run Container") {
+            steps {
+                sh '''
+                docker pull jyothiharsha05/myrepo:v1
+                docker run -d --name cont-1 -p 1111:80 jyothiharsha05/myrepo:v1
+                '''
+            }
+        }
+    }
+}
